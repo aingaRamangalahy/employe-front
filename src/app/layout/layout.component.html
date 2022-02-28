@@ -1,0 +1,26 @@
+<mat-drawer-container autosize style="height: 100vh;">
+  <mat-drawer #drawer mode="side" class="side-bar" opened>
+    <h2>Employes</h2>
+    <ul>
+      <li>
+        <i class="fas fa-users"></i>
+        <a [routerLink]="['/employes']">Employés</a>
+      </li>
+      <li>
+        <i class="fas fa-briefcase"></i>
+        <a [routerLink]="['/services']">Service</a>
+      </li>
+      <li>
+        <i class="fas fa-user"></i>
+        <a [routerLink]="['/audit']">Audit</a>
+      </li>
+    </ul>
+  </mat-drawer>
+
+  <div class="main-content">
+    <button type="button" mat-button (click)="drawer.toggle()" class="button-sidebar-toggler">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
