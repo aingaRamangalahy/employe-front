@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../schema/employe.schema';
+import { Service } from '../schema/service.schema';
 import { MainService } from './main.service';
 
 @Injectable({
@@ -18,14 +18,14 @@ export class  ServiceService{
     return this.mainService._GET(`/api/service/${id}`);
   }
 
-  create(user: User): Observable<any> {
-    return this.mainService._POST(`/api/service/`, user, {
+  create(service: Service): Observable<any> {
+    return this.mainService._POST(`/api/service/`, service, {
       reportProgress: true,
       observe: 'events',
     });
   }
 
-  update(id: string, body: User): Observable<any> {
+  update(id: string, body: Service): Observable<any> {
     return this.mainService._PUT('/api/service', id, body, {
       reportProgress: true,
       observe: 'events',

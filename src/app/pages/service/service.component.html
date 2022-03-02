@@ -7,37 +7,37 @@
     <input matInput (keyup)="applyFilter($event)" #input>
 </mat-form-field>
 
-<button mat-raised-button color="primary" class="demo-button" (click)="addService()">
+<button mat-raised-button color="primary" class="demo-button" (click)="openAddServiceDialog()">
    Ajouter un Service
 </button>
 
 <div class="table-container d-flex flex-column justify-content-between mat-elevation-z8">
 
-    <table mat-table matSort [dataSource]="dataSource">
+    <table mat-table matSort [dataSource]="serviceList">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Service </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="intitule">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Intitule </th>
-            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.intitule}} </td>
         </ng-container>
 
         <ng-container matColumnDef="effectif">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Effectif </th>
-            <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.effectif}} </td>
         </ng-container>
 
         <ng-container matColumnDef="som_sal">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Somme salaire </th>
-            <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element?.sommeSalaire }} </td>
         </ng-container>
 
         <ng-container matColumnDef="nb_sal_def">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre salaire défini </th>
-          <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+          <td mat-cell *matCellDef="let element"> {{ element?.nbSalaire }} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">

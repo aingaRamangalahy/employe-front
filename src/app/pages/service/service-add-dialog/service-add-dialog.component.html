@@ -1,1 +1,11 @@
-<p>service-add-dialog works!</p>
+<div mat-dialog-content>
+  <p>Ajouter un service</p>
+  <mat-form-field appearance="fill">
+    <mat-label>nouveau service...</mat-label>
+    <input matInput [(ngModel)]="newService">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="newService" cdkFocusInitial>Ajouter</button>
+</div>
