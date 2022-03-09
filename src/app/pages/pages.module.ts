@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
 // import { UserAddModalComponent } from './user-add-modal/user-add-modal.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -55,6 +56,7 @@ import { ServiceDeleteDialogComponent } from './service/service-delete-dialog/se
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
+    MatCardModule,
   ],
 })
 export class PagesModule {}
