@@ -14,26 +14,26 @@
 
 <div class="table-container d-flex flex-column justify-content-between mat-elevation-z8">
 
-    <table mat-table matSort [dataSource]="dataSource">
+    <table mat-table matSort [dataSource]="employeList">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Employe </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element"> {{element._id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="nom">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
-            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="salaire">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Salaire </th>
-            <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.salaire}} </td>
         </ng-container>
 
         <ng-container matColumnDef="service">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Service </th>
-            <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element.service }} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">

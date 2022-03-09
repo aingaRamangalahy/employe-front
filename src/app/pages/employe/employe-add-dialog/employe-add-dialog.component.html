@@ -1,0 +1,38 @@
+<div mat-dialog-content>
+  <p>Ajouter un employe</p>
+  <form [formGroup]="form">
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Nom"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          placeholder="salaire"
+          formControlName="salaire"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Service</mat-label>
+        <select matNativeControl formControlName="service">
+          <option *ngFor="let item of services" value="{{item}}"> {{ item }}</option>
+        </select>
+      </mat-form-field>
+
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button color="primary" [mat-dialog-close]="form.value" cdkFocusInitial>Ajouter</button>
+</div>

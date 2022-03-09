@@ -21,7 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const authReq = this.addTokenToRequest(req, authToken);
 
     // not intercept login
-    if (req.url.includes('/api/auth/login')) {
+    if (req.url.includes('/api/auth/signin')) {
       return next.handle(req);
     }
     // send cloned request with header to the next handler.

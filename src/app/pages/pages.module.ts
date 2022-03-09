@@ -27,6 +27,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ServiceAddDialogComponent } from './service/service-add-dialog/service-add-dialog.component';
 import { ServiceUpdateDialogComponent } from './service/service-update-dialog/service-update-dialog.component';
 import { ServiceDeleteDialogComponent } from './service/service-delete-dialog/service-delete-dialog.component';
+import { EmployeAddDialogComponent } from './employe/employe-add-dialog/employe-add-dialog.component';
+import { EmployeEditDialogComponent } from './employe/employe-edit-dialog/employe-edit-dialog.component';
+import { EmployeDeleteDialogComponent } from './employe/employe-delete-dialog/employe-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { ServiceDeleteDialogComponent } from './service/service-delete-dialog/se
     ServiceAddDialogComponent,
     ServiceUpdateDialogComponent,
     ServiceDeleteDialogComponent,
+    EmployeAddDialogComponent,
+    EmployeEditDialogComponent,
+    EmployeDeleteDialogComponent,
   ],
   imports: [
     CommonModule,
