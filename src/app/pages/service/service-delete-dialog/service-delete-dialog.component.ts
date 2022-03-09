@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-service-delete-dialog',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceDeleteDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ServiceDeleteDialogComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  onNoClick() {
+    this.dialogRef.close()
   }
 
 }

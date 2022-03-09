@@ -1,1 +1,11 @@
-<p>service-update-dialog works!</p>
+<div mat-dialog-content>
+  <p>Modifier un service</p>
+  <mat-form-field appearance="fill">
+    <mat-label></mat-label>
+    <input matInput [(ngModel)]="data.service">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button color="primary" [mat-dialog-close]="data.service" cdkFocusInitial>Modifier</button>
+</div>
