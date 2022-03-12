@@ -14,6 +14,10 @@ export class  EmployeService{
     return this.mainService._GET('/api/users');
   }
 
+  getAllAudit(): Observable<any> {
+    return this.mainService._GET('/api/users/audit');
+  }
+
   getOneById(id: string): Observable<any> {
     return this.mainService._GET(`/api/users/${id}`);
   }

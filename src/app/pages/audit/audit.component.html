@@ -4,36 +4,36 @@
 
 <div class="table-container d-flex flex-column justify-content-between mat-elevation-z8">
 
-    <table mat-table matSort [dataSource]="dataSource">
+    <table mat-table matSort [dataSource]="audits">
 
         <ng-container matColumnDef="quand">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Quand </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.when | date:'d/M/yy, h:mm a'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="qui">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Qui </th>
-            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.who}} </td>
         </ng-container>
 
         <ng-container matColumnDef="quoi">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Quoi </th>
-            <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+            <td mat-cell *matCellDef="let element"> <span class="action {{ actionClass[element.what]}}" > {{element.what}}</span>  </td>
         </ng-container>
 
         <ng-container matColumnDef="ancien_salaire">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Ancien salaire </th>
-            <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element.oldSalaire ? element.oldSalaire : '~'  }} </td>
         </ng-container>
 
         <ng-container matColumnDef="nouv_salaire">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nouveau salaire </th>
-          <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.newSalaire ? element.newSalaire : '~' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="employe">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Employe</th>
-          <td mat-cell *matCellDef="let element"> {{ element.createdAt | date | date:'MM/dd/y' }} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.user }} </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -21,3 +21,20 @@ th.mat-sort-header-sorted {
   float: right;
   margin-right: 3%;
 }
+
+.action {
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+.delete {
+  background: red;
+}
+
+.create {
+  background: rgb(119, 172, 119);
+}
+
+.update {
+  background: rgb(90, 90, 180);
+}

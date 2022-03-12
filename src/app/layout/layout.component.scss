@@ -31,6 +31,10 @@ $textColor: white;
         color: $textColor;
         text-decoration: none;
       }
+
+      .exit {
+        cursor: pointer;
+      }
     }
 
     li:hover {

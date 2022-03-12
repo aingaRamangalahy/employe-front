@@ -10,9 +10,6 @@
           formControlName="name"
         />
       </mat-form-field>
-
-
-
       <mat-form-field>
         <input
           type="number"
@@ -24,12 +21,10 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Service</mat-label>
-        <select matNativeControl formControlName="service">
-          <option *ngFor="let item of services" value="{{item}}"> {{ item }}</option>
-        </select>
+        <mat-select matNativeControl formControlName="service">
+          <mat-option *ngFor="let item of services" value="{{item}}"> {{ item }}</mat-option>
+        </mat-select>
       </mat-form-field>
-
-
   </form>
 </div>
 <div mat-dialog-actions>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { combineLatest } from 'rxjs';
 import { Service } from 'src/app/core/schema/service.schema';
+import { EmployeService } from 'src/app/core/services/employe.service';
 import { ServiceService } from 'src/app/core/services/service.service';
 import { ServiceAddDialogComponent } from './service-add-dialog/service-add-dialog.component';
 import { ServiceDeleteDialogComponent } from './service-delete-dialog/service-delete-dialog.component';
@@ -15,15 +17,19 @@ export class ServiceComponent implements OnInit {
   serviceList: Service[] = [];
 
   displayedColumns: string[] = [
-    'id',
+    // 'id',
     'intitule',
     'effectif',
     'som_sal',
     'nb_sal_def',
-    'actions'
+    'actions',
   ];
 
-  constructor(public dialog: MatDialog, private service: ServiceService) {}
+  constructor(
+    public dialog: MatDialog,
+    private service: ServiceService,
+    private employe: EmployeService
+  ) {}
 
   ngOnInit(): void {
     this.getServices();
@@ -49,9 +55,28 @@ export class ServiceComponent implements OnInit {
   }
 
   getServices() {
-    this.service.getAll().subscribe((data) => {
-      console.log('service data', data);
-      this.serviceList = data;
+    let services$ = this.service.getAll();
+    let employe$ = this.employe.getAll();
+    combineLatest(services$, employe$).subscribe(([services, employes]) => {
+      console.log('servies', services);
+      console.log('emp', employes);
+      services = services.map((service) => {
+        let serviceEmploye = employes.filter(
+          (employe) => employe?.service === service.intitule
+        );
+        console.log('SERVICE_AMP', serviceEmploye);
+        let effectif = serviceEmploye.length;
+        let somSalaire = serviceEmploye.map(serv => serv.salaire).reduce(
+          (prev, curent) => prev + curent
+        );
+        let nbSalaireDif = serviceEmploye.filter(
+          (emp) => emp.salaire > 0
+        ).length;
+
+        return { ...service, effectif, somSalaire, nbSalaireDif };
+      });
+
+      this.serviceList = services;
       this.serviceList = this.serviceList.reverse();
     });
   }
@@ -59,17 +84,19 @@ export class ServiceComponent implements OnInit {
   editService(element) {
     const dialogRef = this.dialog.open(ServiceUpdateDialogComponent, {
       width: '250px',
-      data: { service: element?.intitule}
+      data: { service: element?.intitule },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
       if (result) {
-        this.service.update(element._id, { intitule: result }).subscribe((data) => {
-          if (data) {
-            this.getServices();
-          }
-        });
+        this.service
+          .update(element._id, { intitule: result })
+          .subscribe((data) => {
+            if (data) {
+              this.getServices();
+            }
+          });
       }
     });
   }
@@ -81,7 +108,7 @@ export class ServiceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result && result == 'ok') {
-        this.service.delete(element._id,).subscribe((data) => {
+        this.service.delete(element._id).subscribe((data) => {
           if (data) {
             this.getServices();
           }

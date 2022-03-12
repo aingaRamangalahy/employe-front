@@ -27,8 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
     // send cloned request with header to the next handler.
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        // throw new Error(error?.error?.errorMessage);
-        console.log(error?.error?.errorMessage);
+        // throw new Error(error?.error?.errorMessag
         return next.handle(req);
       })
     );
