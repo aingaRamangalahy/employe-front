@@ -58,17 +58,14 @@ export class ServiceComponent implements OnInit {
     let services$ = this.service.getAll();
     let employe$ = this.employe.getAll();
     combineLatest(services$, employe$).subscribe(([services, employes]) => {
-      console.log('servies', services);
-      console.log('emp', employes);
       services = services.map((service) => {
         let serviceEmploye = employes.filter(
           (employe) => employe?.service === service.intitule
         );
-        console.log('SERVICE_AMP', serviceEmploye);
         let effectif = serviceEmploye.length;
-        let somSalaire = serviceEmploye.map(serv => serv.salaire).reduce(
-          (prev, curent) => prev + curent
-        );
+        let somSalaire = serviceEmploye
+          .map((serv) => serv.salaire)
+          .reduce((prev, curent) => prev + curent, 0);
         let nbSalaireDif = serviceEmploye.filter(
           (emp) => emp.salaire > 0
         ).length;

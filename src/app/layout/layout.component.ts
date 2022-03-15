@@ -16,7 +16,7 @@ export class LayoutComponent implements OnInit {
 
   logout() {
     this.authService.clearTokens();
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(['/login'])
 
   }
 }

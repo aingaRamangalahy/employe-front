@@ -3,20 +3,28 @@
     <h2>Employes</h2>
     <ul>
       <li>
-        <i class="fas fa-users"></i>
-        <a [routerLink]="['/employes']">Employés</a>
+        <a [routerLink]="['/employes']">
+          <i class="fa fa-users"></i>
+          <span>Employés</span>
+        </a>
       </li>
       <li>
-        <i class="fas fa-briefcase"></i>
-        <a [routerLink]="['/services']">Service</a>
+        <a [routerLink]="['/services']">
+          <i class="fa fa-building"></i>
+          <span>Service</span>
+        </a>
       </li>
       <li>
-        <i class="fas fa-user"></i>
-        <a [routerLink]="['/audit']">Audit</a>
+        <a [routerLink]="['/audit']">
+          <i class="fa fa-archive"></i>
+          <span>Audit</span>
+        </a>
       </li>
       <li>
-        <i class="fas fa-user"></i>
-        <a class="exit" (click)="logout()">Se deconnecter</a>
+        <a class="exit" (click)="logout()">
+          <i class="fa fa-logout"></i>
+          <span>Se deconnecter</span>
+        </a>
       </li>
     </ul>
   </mat-drawer>
